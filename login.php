@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy giá trị từ form
     $MaSV = $_POST["MaSV"];
     $MaMonHoc = $_POST["MaMonHoc"];
+    $Diem = $_POST["Diem"];
     
 
     // Truy vấn lấy dữ liệu từ database
