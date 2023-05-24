@@ -7,7 +7,7 @@ $password = "12345678";
 $dbname = "myDB";
 
 // Tạo kết nối đến database
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $MaSV, $MaMonHoc, $Diem, $dbname);
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
@@ -17,21 +17,22 @@ if ($conn->connect_error) {
 // Kiểm tra nếu form đã submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy giá trị từ form
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $MaSV = $_POST["MaSV"];
+    $MaMonHoc = $_POST["MaMonHoc"];
+    
 
     // Truy vấn lấy dữ liệu từ database
-    $sql = "SELECT * FROM User WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM User WHERE Diem='$MaSV' AND MaMonHoc='$MaMonHoc'";
     $result = $conn->query($sql);
 
     // Kiểm tra số lượng bản ghi trả về
     if ($result->num_rows > 0) {
         // Nếu có, đăng nhập thành công
-        echo "Bạn đã đăng nhập thành công";
+        echo "Diem cua ban la: $Diem ";
         // Thực hiện các hành động cần thiết, ví dụ như đưa người dùng vào trang chào mừng
     } else {
         // Nếu không, đăng nhập không thành công
-        echo "Bạn đã đăng nhập không thành công";    }
+        echo "Khong co thong tin diem";    }
 }
 ?>
 
@@ -46,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h2>Đăng nhập</h2>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <label>Tên đăng nhập:</label>
-        <input type="text" name="username"><br><br>
-        <label>Mật khẩu:</label>
-        <input type="password" name="password"><br><br>
-        <input type="submit" value="Đăng nhập">
+        <label>Mã sinh viên:</label>
+        <input type="text" name="MaSV"><br><br>
+        <label>Mã môn học:</label>
+        <input type="MaMonHoc" name="MaMonHoc"><br><br>
+        <input type="submit" value="Nhập thông tin">
     </form>
 </body>
 
