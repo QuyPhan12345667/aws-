@@ -7,7 +7,7 @@ $password = "12345678";
 $dbname = "myDB";
 
 // Tạo kết nối đến database
-$conn = new mysqli($servername, $MaSV, $MaMonHoc, $Diem, $dbname);
+$conn = new mysqli($servername, $MaSV, $MaMonHoc, $dbname);
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy giá trị từ form
     $MaSV = $_POST["MaSV"];
     $MaMonHoc = $_POST["MaMonHoc"];
-    $Diem = $_POST["Diem"];
+ 
     
 
     // Truy vấn lấy dữ liệu từ database
